@@ -5,7 +5,7 @@ import MySQLdb
 
 def main():
     if len(sys.argv) != 5:
-        print("Usage: ./5-cities_by_state.py <mysql_username> <mysql_password> "
+        print("Usage: ./5-filter_cities.py <mysql_username> <mysql_password> "
               "<database_name> <state_name>")
         sys.exit(1)
 
@@ -32,7 +32,7 @@ def main():
                 ORDER BY cities.id ASC
                 """
         cursor.execute(query, (state_name,))
-        
+
         cities = cursor.fetchall()
 
         for city in cities:
