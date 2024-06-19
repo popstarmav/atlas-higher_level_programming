@@ -4,9 +4,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
+
 def main():
     if len(sys.argv) != 5:
-        print("Usage: ./10-model_state_my_get.py <mysql_username> <mysql_password> <database_name> <state_name>")
+        print("Usage: ./10-model_state_my_get.py <mysql_username> "
+              "<mysql_password> <database_name> <state_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -15,7 +17,10 @@ def main():
     state_name = sys.argv[4]
 
     # MySQL connection URL
-    DB_URL = f"mysql://{mysql_username}:{mysql_password}@localhost:3306/{db_name}"
+    DB_URL = (
+        f"mysql://{mysql_username}:{mysql_password}"
+        f"@localhost:3306/{db_name}"
+    )
 
     # Create the engine
     engine = create_engine(DB_URL)
@@ -29,7 +34,9 @@ def main():
 
     try:
         # Query State object with the specified name
-        state = session.query(State).filter(State.name == state_name).one_or_none()
+        state = session.query(State).filter(
+            State.name == state_name
+        ).one_or_none()
 
         if state:
             print(state.id)
@@ -43,6 +50,7 @@ def main():
     finally:
         # Close the session
         session.close()
+
 
 if __name__ == "__main__":
     main()
