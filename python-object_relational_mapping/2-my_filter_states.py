@@ -5,8 +5,8 @@ import MySQLdb
 
 def main():
     if len(sys.argv) != 5:
-        print("Usage: ./2-my_filter_states.py <mysql_username> <mysql_password> "
-              "<database_name> <state_name>")
+        print("Usage: ./2-my_filter_states.py <mysql_username> "
+              "<mysql_password> <database_name> <state_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
