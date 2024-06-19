@@ -4,9 +4,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
+
 def main():
     if len(sys.argv) != 4:
-        print("Usage: ./13-model_state_delete_a.py <mysql_username> <mysql_password> <database_name>")
+        print("Usage: ./13-model_state_delete_a.py <mysql_username> "
+              "<mysql_password> <database_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -14,7 +16,10 @@ def main():
     db_name = sys.argv[3]
 
     # MySQL connection URL
-    DB_URL = f"mysql://{mysql_username}:{mysql_password}@localhost:3306/{db_name}"
+    DB_URL = (
+        f"mysql://{mysql_username}:{mysql_password}"
+        f"@localhost:3306/{db_name}"
+    )
 
     # Create the engine
     engine = create_engine(DB_URL)
@@ -28,7 +33,9 @@ def main():
 
     try:
         # Query State objects where name contains 'a'
-        states_to_delete = session.query(State).filter(State.name.like('%a%')).all()
+        states_to_delete = session.query(State).filter(
+            State.name.like('%a%')
+        ).all()
 
         for state in states_to_delete:
             session.delete(state)
@@ -44,6 +51,7 @@ def main():
     finally:
         # Close the session
         session.close()
+
 
 if __name__ == "__main__":
     main()
