@@ -5,7 +5,8 @@ import MySQLdb
 
 def main():
     if len(sys.argv) != 4:
-        print("Usage: ./3-cities_by_state.py <mysql_username> <mysql_password> <database_name>")
+        print("Usage: ./0-select_state_update_id_2.py <mysql_username> "
+              "<mysql_password> <database_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -22,9 +23,14 @@ def main():
         )
 
         cursor = db.cursor()
-        query = "SELECT cities.id, cities.name, states.name FROM cities JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC"
+        query = (
+            "SELECT cities.id, cities.name, states.name "
+            "FROM cities "
+            "JOIN states ON cities.state_id = states.id "
+            "ORDER BY cities.id ASC"
+        )
         cursor.execute(query)
-        
+
         cities = cursor.fetchall()
 
         for city in cities:
