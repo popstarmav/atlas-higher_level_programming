@@ -4,9 +4,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
+
 def main():
     if len(sys.argv) != 4:
-        print("Usage: ./8-model_state_first_get.py <mysql_username> <mysql_password> <database_name>")
+        print("Usage: ./8-model_state_first_get.py <mysql_username> "
+              "<mysql_password> <database_name>")
         sys.exit(1)
 
     mysql_username = sys.argv[1]
@@ -42,6 +44,7 @@ def main():
     finally:
         # Close the session
         session.close()
+
 
 if __name__ == "__main__":
     main()
