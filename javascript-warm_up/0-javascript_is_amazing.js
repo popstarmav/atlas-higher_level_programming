@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
 // Define a variable named myVar 
 // with the value "JavaScript is amazing"
