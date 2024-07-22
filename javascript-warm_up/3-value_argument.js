@@ -1,6 +1,7 @@
 #!/usr/bin/node
 
-const [, , arg] = process.argv;
+// Using const for constant values
+const arg = process.argv[2];
 
-// Print the first argument or "No argument" if no argument is passed
-console.log(arg ? 'Argument found' : 'No argument');
+// Checking if any argument is passed and printing the result
+console.log(arg !== undefined ? arg : 'No argument');
