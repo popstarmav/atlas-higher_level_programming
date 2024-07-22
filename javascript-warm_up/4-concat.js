@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 
 // Get the command-line arguments excluding the first two (node and script path)
 const args = process.argv.slice(2);
